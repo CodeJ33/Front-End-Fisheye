@@ -1,0 +1,20 @@
+%row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%column-center {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+%grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

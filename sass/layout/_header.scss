@@ -1,0 +1,15 @@
+header {
+    height: 90px;
+    @extend %row-center;
+
+    & .logo {
+        height: 50px;
+        margin-left: 100px;
+
+        & h1 {
+            margin-right: 100px;
+            font-size: 36px;
+            line-height: 46.87px;
+        }
+    }
+}
