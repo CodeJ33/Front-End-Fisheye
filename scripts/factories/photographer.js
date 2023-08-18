@@ -7,57 +7,100 @@ function photographerFactory(data) {
     function getUserCardDOM() {
 
         /**
-         * Création des éléments article, img, a et h2
+         * Création de la "carte" du photographe
+         * Ajout d'une classe
          */
         const article = document.createElement('article');
         article.setAttribute("class", "photographer__card");
+
+
+        /**
+         * Création de l'image du photographe
+         * Ajout du chemin, d'un texte alternatif et d'une classe
+         */
         const img = document.createElement('img');
         img.setAttribute("src", picture);
         img.setAttribute("alt", `Picture of ${name}`);
         img.setAttribute("class", "photographer__img")
+
+
+        /**
+         * Création de l'ancre sur la photo
+         * Ajout du href et d'une classe
+         */
         const anchor = document.createElement('a')
         anchor.setAttribute("href", `/photographer.html?id=${id}`);
         anchor.setAttribute("class", "photographer__link");
+
+        /**
+         * Création du titre h2 avec le nom et prénom du photographe
+         * Ajout d'une classe
+         */
         const h2 = document.createElement('h2');
         h2.textContent = name;
         h2.setAttribute("class", "photographer__HomeName");
 
         /**
-         * Création de la div Texte et son contenu
+         * Création de la div Texte
+         * Ajout d'une classe
          */
         const divText = document.createElement('div');
         divText.setAttribute("class", "photographer__text");
-        const p = document.createElement('p');
-        const c = document.createElement('p');
-        const d = document.createElement('p');
-        const r = document.createElement('p');
-        c.textContent = city;
-        c.setAttribute("class", "photographer__text__country");
-        p.innerHTML = country;
-        d.textContent = tagline;
-        d.setAttribute("class", "photographer__text__tagline");
-        d.setAttribute("id", "tagline");
-        r.textContent = price;
+
+
+
+        /** Création du nom dce la ville, d'une balise p
+         * Ajout d'une classe
+         */
+        const cities = document.createElement('p');
+        cities.textContent = city;
+        cities.setAttribute("class", "photographer__text__country");
+
+        /** Création du nom du pays, d'une balise p
+         * Ajout d'une classe
+         */
+
+        const pays = document.createElement('p');
+        pays.innerHTML = country;
+        pays.setAttribute("class", "photographer__text__country");
+
 
 
         /**
-         * Ajout des éléments créé à la page
+         * Création de la phrase de présentation 
+         * Ajout d'une classe et d'un ID
          */
+        const speech = document.createElement('p');
+        speech.textContent = tagline;
+        speech.setAttribute("class", "photographer__text__tagline");
+        speech.setAttribute("id", "tagline");
+
+
+        /**
+         * Création du prix
+         * Ajout d'une classe et d'un ID
+         */
+
+        const prix = document.createElement('p');
+        prix.textContent = price;
+        prix.setAttribute("class", "photographer__text__price")
+        prix.setAttribute("id", "price");
+
+
+        /**
+         * Ajout des éléments créés à la page
+         */
+
         article.appendChild(anchor);
         anchor.appendChild(img);
         anchor.appendChild(h2);
-
         article.append(divText);
-        divText.appendChild(c)
-        c.insertAdjacentHTML('beforeend', `, ${country}`);
-        p.setAttribute("class", "photographer__text__country");
-        c.setAttribute("id", "countries");
-        divText.append(d);
-        r.insertAdjacentHTML('beforeend', "E/jour")
+        cities.insertAdjacentHTML('beforeend', `, ${country}`);
+        cities.setAttribute("id", "countries");
+        divText.append(speech);
+        prix.insertAdjacentHTML('beforeend', "E/jour")
+        divText.append(prix);
 
-        r.setAttribute("class", "photographer__text__price")
-        r.setAttribute("id", "price");
-        divText.append(r);
 
         return (article);
     }
