@@ -7,7 +7,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
 
         /**
-         * Création de la "carte" du photographe
+         * Création de la "carte" du photoographe
          * Ajout d'une classe
          */
         const article = document.createElement('article');
@@ -48,27 +48,26 @@ function photographerFactory(data) {
         divText.setAttribute("class", "photographer__text");
 
 
-
-        /** Création du nom dce la ville, d'une balise p
-         * Ajout d'une classe
+        /**
+         * Création du nom de la ville
          */
         const cities = document.createElement('p');
         cities.textContent = city;
         cities.setAttribute("class", "photographer__text__country");
 
-        /** Création du nom du pays, d'une balise p
-         * Ajout d'une classe
-         */
 
+        /**
+         * Création du nom du pays
+         */
         const pays = document.createElement('p');
         pays.innerHTML = country;
         pays.setAttribute("class", "photographer__text__country");
 
 
 
+
         /**
-         * Création de la phrase de présentation 
-         * Ajout d'une classe et d'un ID
+         * Création de la phrase d'accroche
          */
         const speech = document.createElement('p');
         speech.textContent = tagline;
@@ -78,29 +77,30 @@ function photographerFactory(data) {
 
         /**
          * Création du prix
-         * Ajout d'une classe et d'un ID
          */
-
         const prix = document.createElement('p');
         prix.textContent = price;
-        prix.setAttribute("class", "photographer__text__price")
-        prix.setAttribute("id", "price");
+
 
 
         /**
-         * Ajout des éléments créés à la page
+         * Ajout des éléments créé à la page
          */
 
         article.appendChild(anchor);
         anchor.appendChild(img);
         anchor.appendChild(h2);
         article.append(divText);
+        divText.appendChild(cities)
         cities.insertAdjacentHTML('beforeend', `, ${country}`);
+
         cities.setAttribute("id", "countries");
         divText.append(speech);
         prix.insertAdjacentHTML('beforeend', "E/jour")
-        divText.append(prix);
 
+        prix.setAttribute("class", "photographer__text__price")
+        prix.setAttribute("id", "price");
+        divText.append(prix);
 
         return (article);
     }
