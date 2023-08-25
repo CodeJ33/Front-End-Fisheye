@@ -7,7 +7,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
 
         /**
-         * Création de la "carte" du photoographe
+         * Création de la "carte" du photographe
          * Ajout d'une classe
          */
         const article = document.createElement('article');

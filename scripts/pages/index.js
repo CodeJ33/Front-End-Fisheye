@@ -27,6 +27,8 @@ async function init() {
     displayData(photographers);
 }
 
+
+export default getPhotographers;
 init();
 
 
