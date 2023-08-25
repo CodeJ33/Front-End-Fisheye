@@ -1,6 +1,6 @@
-import fetchJson from "../helpers/fetchPhotographers.js";
+import fetchJson from "./helpers/fetchPhotographers.js";
 import fetchMediaJson from "../helpers/fetchMedia.js";
-import mediaFactory from "../factories/mediaFactory.js";
+import mediaFactory from "./factories/mediaFactory.js";
 
 
 let params = (new URL(document.location)).searchParams;
