@@ -1,8 +1,26 @@
+/**
+ * @function photographerFactory
+* @param {Object} data 
+ * @param {string} data.name 
+ * @param {string} data.portrait 
+ * @param {string} data.country 
+ * @param {string} data.city 
+ * @param {number} data.id 
+ * @param {string} data.tagline 
+ * @param {string} data.price 
+ * @returns {Object}
+ */
 
 function photographerFactory(data) {
     const { name, portrait, country, city, id, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
+
+    /**
+     * @function getUserCardDOM
+     * @description Génère la "card" du photographe dans le DOM
+     * @returns {HTMLElement} 
+     */
 
     function getUserCardDOM() {
 
@@ -11,7 +29,7 @@ function photographerFactory(data) {
          * Ajout d'une classe
          */
         const article = document.createElement('article');
-        article.setAttribute("class", "photographer__card");
+        article.setAttribute('class', 'photographer__card');
 
 
         /**
@@ -19,18 +37,19 @@ function photographerFactory(data) {
          * Ajout du chemin, d'un texte alternatif et d'une classe
          */
         const img = document.createElement('img');
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", `Picture of ${name}`);
-        img.setAttribute("class", "photographer__img")
+        img.setAttribute('src', picture);
+        img.setAttribute('alt', `Picture of ${name}`);
+        img.setAttribute('class', 'photographer__img');
 
 
         /**
          * Création de l'ancre sur la photo
          * Ajout du href et d'une classe
          */
-        const anchor = document.createElement('a')
-        anchor.setAttribute("href", `/photographer.html?id=${id}`);
-        anchor.setAttribute("class", "photographer__link");
+        const anchor = document.createElement('a');
+        anchor.setAttribute('href', `/photographer.html?id=${id}`);
+        anchor.setAttribute('class', 'photographer__link');
+
 
         /**
          * Création du titre h2 avec le nom et prénom du photographe
@@ -38,14 +57,15 @@ function photographerFactory(data) {
          */
         const h2 = document.createElement('h2');
         h2.textContent = name;
-        h2.setAttribute("class", "photographer__HomeName");
+        h2.setAttribute('class', 'photographer__HomeName');
+
 
         /**
          * Création de la div Texte
          * Ajout d'une classe
          */
         const divText = document.createElement('div');
-        divText.setAttribute("class", "photographer__text");
+        divText.setAttribute('class', 'photographer__text');
 
 
         /**
@@ -53,7 +73,7 @@ function photographerFactory(data) {
          */
         const cities = document.createElement('p');
         cities.textContent = city;
-        cities.setAttribute("class", "photographer__text__country");
+        cities.setAttribute('class', 'photographer__text__country');
 
 
         /**
@@ -61,8 +81,7 @@ function photographerFactory(data) {
          */
         const pays = document.createElement('p');
         pays.innerHTML = country;
-        pays.setAttribute("class", "photographer__text__country");
-
+        pays.setAttribute('class', 'photographer__text__country');
 
 
 
@@ -71,8 +90,8 @@ function photographerFactory(data) {
          */
         const speech = document.createElement('p');
         speech.textContent = tagline;
-        speech.setAttribute("class", "photographer__text__tagline");
-        speech.setAttribute("id", "tagline");
+        speech.setAttribute('class', 'photographer__text__tagline');
+        speech.setAttribute('id', 'tagline');
 
 
         /**
@@ -91,19 +110,19 @@ function photographerFactory(data) {
         anchor.appendChild(img);
         anchor.appendChild(h2);
         article.append(divText);
-        divText.appendChild(cities)
+        divText.appendChild(cities);
         cities.insertAdjacentHTML('beforeend', `, ${country}`);
 
-        cities.setAttribute("id", "countries");
+        cities.setAttribute('id', 'countries');
         divText.append(speech);
-        prix.insertAdjacentHTML('beforeend', "E/jour")
+        prix.insertAdjacentHTML('beforeend', 'E/jour');
 
-        prix.setAttribute("class", "photographer__text__price")
-        prix.setAttribute("id", "price");
+        prix.setAttribute('class', 'photographer__text__price');
+        prix.setAttribute('id', 'price');
         divText.append(prix);
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, getUserCardDOM };
 }
 export default photographerFactory;

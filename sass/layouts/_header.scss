@@ -1,4 +1,4 @@
-header {
+.headerIndex {
     height: 90px;
     @extend %row-center;
 
@@ -17,7 +17,7 @@ header {
 
 
 @media screen and (min-width:280px) and (max-width:770px) {
-    header {
+    .headerIndex {
         flex-direction: column;
 
         .logo {
@@ -28,6 +28,7 @@ header {
         h1 {
             margin-right: 0;
             font-size: 30px;
+            margin-top: 32px;
         }
     }
 }

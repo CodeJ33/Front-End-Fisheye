@@ -1,40 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale =1.0">
+    <script src="https://kit.fontawesome.com/6511c09961.js"
+      crossorigin="anonymous"></script>
+   
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header class="headerPage">
       <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" /></a>
+      <img src="assets/images/logo.png" class="logo" alt="logo de fisheyes"></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <div id="photoHead"  class="photograph-header">
+        <div id="photoInfo">
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+        <label id="selectAreaLabel" for="selectAreaLabel" class="filterSection__label"></label>
+      <section class="photographeMedia"></section>
     </main>
-    <div id="contact_modal">
+    <dialog id="contact_modal" aria-hidden="true" aria-describedby="modalContact">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <div class="modal_containerHeader">
+				<header class="modal__header">
+          <h2 class="modal__title">Contactez-moi</h2>
+          <h3 class= modal__name></h3>
+          <button id="cross" class="modal__closeBtn" aria-label="Bouton de femeture de la modale">
+          <img  alt="closeicon" src="assets/icons/close.svg">
+        </button>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
+      </div>
+      <form id="form">
+        <div>
+            <label for="first">Prénom</label>
+            <input
+  class="text-control"
+  type="text"
+  id="first"
+  name="first"
+  placeholder="Prénom"
+  minlength="2"
+  >
+  <div id="firstName" class="text-danger">Veuillez rentrer deux caractères minimum</div>
+  <label for="last">Nom</label>
+  <input
+  class="text-control"
+  type="text"
+  id="last"
+  name="last"
+  placeholder="Nom"
+  minlength="2"
+  >
+  <div id="lastName" class="text-danger">Veuillez rentrer deux caractères minimum</div>
+  <label for="email">Email</label>
+  <input
+  class="text-control"
+  type="email"
+  id="email"
+  name="email"
+  placeholder="Email"
+  autocomplete="on"
+  >
+  <div id="mail" class="text-danger">Veuillez respecter le format d'une adresse mail avec @</div>
+  <label for="text">Votre message</label>
+  <input 
+  class="text-control"
+  id="text"
+  name="message"
+  type="text"
+  minlength="10"
+  >
+  <div id="textField" class="text-danger" >Veuillez faire un message d'au moins 10 caractères</div>
+          </div>
+  <button class="contact_button" id="button_submit" type="submit">Envoyer</button>
+    </form>
 			</div>
 		</div>
+    </dialog>
+    <dialog id="lightbox_modal" aria-hidden="true"  aria-describedby="lightbox_modal">
+      <div class="lightbox" aria-roledescription="lightbox">
+        
+          <button class="lightbox__btnprevious" aria-label="Bouton précédent du modal de lightbox" >
+            <em class="fa-solid fa-chevron-left"></em>
+          </button>
+        
+        <button id="closeLightbox" class="button" aria-label="fermer la lightbox">
+          <img class="closeLightbox__img" src="assets/icons/close-red.svg" alt="" aria-hidden="true"/>
+        </button>
+        <div class="lightbox-content"></div>
+        
+          <button class="lightbox__btnnext" aria-label="Bouton suivant du modal de lightbox" >
+            <em class="fa-solid fa-chevron-right"></em>
+          </button>
+        
+      </div>
+    </dialog>
+
+    <script type="module"  src="/scripts/utils/modalDisplay.js"defer ></script>
+    <script  src="/scripts/utils/lightbox.js" defer ></script>
+    <script type="module"  src="/scripts/utils/heart.js"  ></script>
     <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script type="module" src="/scripts/utils/contactForm.js"></script>
+   <script type="module" src="/scripts/utils/triage.js"  ></script>
+
+    
+    <footer id="photographerFooter">
+      
+    </footer>
   </body>
 </html>

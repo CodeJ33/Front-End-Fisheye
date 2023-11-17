@@ -1,0 +1,19 @@
+/* Animation coeur */
+
+
+@mixin heart {
+    background-size: 100% 200%;
+    background-clip: text;
+    color: transparent;
+    stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+}
+
+
+/* Remplissage du coeur */
+
+@mixin heart-full {
+    color: #901C1C;
+    font-weight: 900;
+}
