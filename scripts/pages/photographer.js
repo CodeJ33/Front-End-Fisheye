@@ -1,7 +1,7 @@
 import fetchJson from '../helpers/fetchPhotographers.js';
 import mediaFactory from '../factories/mediaFactory.js';
 import fetchMediaJson from '../helpers/fetchMedia.js';
-import photographerFactory from '../factories/photographerFactory.js';
+
 
 let params = (new URL(document.location)).searchParams;
 const identityId = parseInt(params.get('id'));
@@ -9,7 +9,7 @@ const identityId = parseInt(params.get('id'));
 
 fetchMediaJson();
 fetchJson();
-photographerFactory();
+
 
 let nameP = '';
 let selectArea;
