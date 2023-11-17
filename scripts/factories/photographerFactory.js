@@ -47,7 +47,7 @@ function photographerFactory(data) {
          * Ajout du href et d'une classe
          */
         const anchor = document.createElement('a');
-        anchor.setAttribute('href', `/photographer.html?id=${id}`);
+        anchor.setAttribute('href', `./photographer.html?id=${id}`);
         anchor.setAttribute('class', 'photographer__link');
 
 
