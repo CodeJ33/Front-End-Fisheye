@@ -55,9 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             /* Création de l'element qui va contenir le  H2 */
             const card = media.closest('.articleMediaPhotographer');
             const titleElement = card.querySelector('.photographer__mediaTitle');
-
             const titleText = titleElement ? titleElement.textContent : '';
-
             contentContainer.innerHTML = '';
             contentContainer.appendChild(photographerMediaElement);
 

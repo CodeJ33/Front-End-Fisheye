@@ -10,7 +10,6 @@ async function fetchMediaJson() {
         .then(res => res.json())
         .then((media) => {
             let medias = media;
-            console.log(medias);
             return medias;
         });
 }

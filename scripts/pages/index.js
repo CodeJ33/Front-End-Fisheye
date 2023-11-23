@@ -1,20 +1,7 @@
 import photographerFactory from '../factories/photographerFactory.js';
+import fetchJson from '../helpers/fetchPhotographers.js';
 
-/**
- * @async
- * @function getPhotographers
- * @return {Promise<Array>} Une promesse résolue avec un tableau des photographes
- * @description On utilise l'API Fetch pour récupérer les données depuis le fichier JSON
- */
-async function getPhotographers() {
-    return fetch('./data/photographers.json')
-        .then(res => res.json())
-        .then((data) => {
-            let photographers = data;
-            return photographers;
-        });
-
-}
+fetchJson();
 
 /**
  * @async
@@ -36,12 +23,12 @@ async function displayData(photographers) {
  * @description Initialise la page en récupérant les données des photographes et en les affichant avec la fonction displayData
  */
 async function init() {
-    const { photographers } = await getPhotographers();
+    const { photographers } = await fetchJson();
     displayData(photographers);
 }
 
 
-export default getPhotographers;
+export default fetchJson;
 
 init();
 

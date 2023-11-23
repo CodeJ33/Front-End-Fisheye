@@ -1,6 +1,7 @@
-import fetchJson from '../helpers/fetchPhotographers.js';
+import fetchJson from '../helpers/fetchPhotographers.js'; 
+import fetchMediaJson from '../helpers/fetchMedia.js'; 
 import mediaFactory from '../factories/mediaFactory.js';
-import fetchMediaJson from '../helpers/fetchMedia.js';
+
 
 
 let params = (new URL(document.location)).searchParams;
@@ -9,6 +10,7 @@ const identityId = parseInt(params.get('id'));
 
 fetchMediaJson();
 fetchJson();
+
 
 
 let nameP = '';
@@ -22,9 +24,7 @@ const photographerProfile = async () => {
     const { photographers } = await fetchJson();
 
     let photographer = photographers.find(photographer => photographer.id === identityId);
-    console.log(photographer);
-
-
+    
     nameP = photographer.name;
 
 

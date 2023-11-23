@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         main.setAttribute('aria-hidden', 'false');
         footer.setAttribute('aria-hidden', 'false');
         body.setAttribute('class', 'no-scroll');
-        console.log(nameP);
     }
 
     /**
@@ -192,7 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function checkMessage() {
         const textValid = document.getElementById('text');
-        const textField = document.getElementsByClassName('text-danger');
+        console.log(textValid);
+        const textField = document.getElementById('textField');
         const textRegex = /^[\s\S]{20,200}$/;
 
         if (textRegex.test(textValid.value) === true) {
