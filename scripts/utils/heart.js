@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         updateTotalLikes();
 
-
+        
 
         /**
          * @function counterLikes
@@ -57,7 +57,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 counterHearts.textContent = totalLikes.toString();
             }
         });
+    
+        /**
+         * @function counterLikesKeyboard
+         * @description Fonction pour les coeurs avec changement de couleur et incrémentation ou décrémentation du nombre de likes
+         * lorsque la touche espace est enclenchée
+        */
+        document.body.addEventListener('keydown', function (event) {
+            if (event.code === 'Space' && event.target.classList.contains('buttonHeart')) {
+                const button = event.target;
+                const heart = button.querySelector('.fa-heart');
+                
+                const divParent = button.parentNode.parentElement;
+                const paragraphe = divParent.querySelector('p');
+                let valeur = parseInt(paragraphe.textContent);
+                /* Si le coeur est déjà plein le rendre vide et décrémenter le nombre de likes */
+                if (heart.classList.contains('fa-solid') && heart.classList.contains('full')) {
+                    heart.classList.remove('fa-solid', 'full');
+                    valeur--;
+                    totalLikes--;
+                /* Sinon le remplir et ajouter un like à l'image et au total de likes  */
+                } else {     
+                    heart.classList.add('fa-solid', 'full');
+                    valeur++;
+                    totalLikes++;
+                }
+        
+                paragraphe.textContent = valeur.toString();
+                counterHearts.textContent = totalLikes.toString();
+            }
+        });
     });
+
 });
 
 
