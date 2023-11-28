@@ -68,6 +68,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /**
+     * @description Event listener pour ouvir la lightbox au clic suivant le média cliqué IMG OU VIDEO
+     * 
+    */
+    articleMediaPhotographer.addEventListener('click', function (event) {
+        if (event.target.tagName === 'IMG' || event.target.tagName === 'VIDEO') {
+
+            /* Affichage ou non des élements dans la lightbox et masque sur les élements non désirables */
+
+            photographerMediaElements = Array.from(articleMediaPhotographer.querySelectorAll('img, video'));
+            const index = photographerMediaElements.indexOf(event.target);
+            if (index !== -1) {
+                sortLightboxCards(index);
+                header.style.display = 'none';
+                main.style.display = 'none';
+                footer.style.display = 'none';
+
+            }
+        }
+        
+    });
+
+
 
     /**
      * @function closeClickButtonManagement
@@ -84,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
      * @function previousClickButtonManagement
      * @description Fais passer au media précédent dans la Lightbox
      */
+
+
     prevButton.addEventListener('click', () => {
         if (mediaDisplayIndex === 0) {
             mediaDisplayIndex = photographerMediaElements.length - 1;
@@ -105,56 +130,75 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         sortLightboxCards(mediaDisplayIndex);
     });
+    
 
+
+    
     /**
      * @function keyboardManagement 
-     * @description Gestion sur les évènements claviers avec la tocuhe espace, droite et gauche
+     * @description Gestion sur les évènements claviers avec la touche espace, droite et gauche
+     * Pour fermer la lightbox avec espace et aller à droite et à gauche 
      */
     document.addEventListener('keydown', function (event) {
+        const isLightboxOpen = divLightbox.style.display === 'flex';
+
         if (event.code === 'Space') {
+            // Fermer la lightbox
             divLightbox.style.display = 'none';
             header.style.display = 'block';
             main.style.display = 'block';
             footer.style.display = 'block';
-        }
-        if (event.code === 'ArrowRight') {
-            if (mediaDisplayIndex === photographerMediaElements.length - 1) {
-                mediaDisplayIndex = 0;
-            } else {
-                mediaDisplayIndex++;
+        } else if (isLightboxOpen) {
+            // Vérifier si la lightbox est ouverte avant de gérer les touches fléchées
+            if (event.code === 'ArrowRight') {
+                if (mediaDisplayIndex === photographerMediaElements.length - 1) {
+                    mediaDisplayIndex = 0;
+                } else {
+                    mediaDisplayIndex++;
+                }
+                sortLightboxCards(mediaDisplayIndex);
+            } else if (event.code === 'ArrowLeft') {
+                if (mediaDisplayIndex === 0) {
+                    mediaDisplayIndex = photographerMediaElements.length - 1;
+                } else {
+                    mediaDisplayIndex--;
+                }
+                sortLightboxCards(mediaDisplayIndex);
             }
-            sortLightboxCards(mediaDisplayIndex);
-        } else if (event.code === 'ArrowLeft') {
-            if (mediaDisplayIndex === 0) {
-                mediaDisplayIndex = photographerMediaElements.length - 1;
-            } else {
-                mediaDisplayIndex--;
-            }
-            sortLightboxCards(mediaDisplayIndex);
         }
-
     });
+
+   
+
 
     /**
-     * @description Event listener suivant le média cliqué IMG OU VIDEO
-     * 
-    */
-    articleMediaPhotographer.addEventListener('click', function (event) {
-        if (event.target.tagName === 'IMG' || event.target.tagName === 'VIDEO') {
-
-            /* Affichage ou non des élements dans la lightbox et masque sur les élements non désirables */
-
-            photographerMediaElements = Array.from(articleMediaPhotographer.querySelectorAll('img, video'));
-            const index = photographerMediaElements.indexOf(event.target);
-            if (index !== -1) {
-                sortLightboxCards(index);
-                header.style.display = 'none';
-                main.style.display = 'none';
-                footer.style.display = 'none';
-
+     * @description Event listener au clavier pour ouvir la lightbox avec la touche "espace" suivant si le média cliqué IMG OU VIDEO
+     */
+    document.addEventListener('keydown', function (event) {
+        if (event.code === 'Space') {
+            const focusedElement = document.activeElement;
+            const isButtonMedia = focusedElement.closest('.buttonMediaPhotographer');
+    
+            if (isButtonMedia) {
+                photographerMediaElements = Array.from(articleMediaPhotographer.querySelectorAll('img, video'));
+                const index = photographerMediaElements.indexOf(isButtonMedia.querySelector('img, video'));
+    
+                if (index !== -1) {
+                    divLightbox.style.display = 'flex';
+                    sortLightboxCards(index);
+                    header.style.display = 'none';
+                    main.style.display = 'none';
+                    footer.style.display = 'none';
+                } else {
+                    sortLightboxCards(0);
+                    header.style.display = 'none';
+                    main.style.display = 'none';
+                    footer.style.display = 'none';
+                }
             }
         }
     });
+    
 });
 
 
