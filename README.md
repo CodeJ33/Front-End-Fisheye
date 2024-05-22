@@ -6,6 +6,8 @@ FishEye est un site web qui permet aux photographes indépendants de présenter 
 
 ## Objectif :
 
+* Respecter la maquette [Figma](https://www.figma.com/design/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR?node-id=0-1)
+
 * Ecrire du code JavaScript maintenable
 
 * Assurer l'accessibilité d'un site web
